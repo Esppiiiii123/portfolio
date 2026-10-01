@@ -1,0 +1,201 @@
+/* --------------------------------------------------
+   0. RESETEO Y ESTRUCTURA GLOBAL (Sticky Footer)
+   -------------------------------------------------- */
+* {
+  box-sizing: border-box; /* Asegura que padding y borders no sumen ancho al elemento */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  
+  /* NUEVO: Transición suave para cuando cambia el fondo y el color de texto al activar el modo oscuro */
+  color: #1a1a1a;
+  background-color: #ffffff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  
+  /* Flexbox global en columna para fijar el footer abajo (Sticky Footer) */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Forzamos al contenido principal a expandirse verticalmente */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* --------------------------------------------------
+   1. NAVBAR SUPERIOR
+   -------------------------------------------------- */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Alinea los elementos a los extremos */
+  align-items: center;
+  background-color: #1e293b;
+  color: white;
+  padding: 1rem 2rem;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: #f8fafc;
+  text-decoration: none;
+}
+
+/* NUEVO: Estilos compartidos para los botones interactivos (Dark mode y Hamburguesa) */
+.btn-tema, .hamburguesa {
+  background: transparent;
+  border: 1px solid #ffffff44;
+  color: white;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* --------------------------------------------------
+   2. SECCIÓN SOBRE MÍ
+   -------------------------------------------------- */
+.sobre-mi {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.foto-perfil {
+  flex: 0 0 200px; /* Tamaño fijo exacto para la imagen */
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.bio-texto {
+  flex: 1; /* Ocupa el espacio restante */
+}
+
+/* --------------------------------------------------
+   3. SECCIÓN PROYECTOS (Galería Responsive)
+   -------------------------------------------------- */
+.galeria {
+  display: flex;
+  flex-wrap: wrap; /* Las tarjetas bajan de fila si no caben */
+  gap: 1.5rem;
+}
+
+.tarjeta {
+  flex: 1 1 250px;
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 1.5rem;
+  /* NUEVO: Transición para suavizar el cambio de color de las tarjetas en modo oscuro */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* --------------------------------------------------
+   4. FOOTER
+   -------------------------------------------------- */
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #0f172a;
+  color: #94a3b8;
+  padding: 1.5rem 1rem;
+}
+
+.redes {
+  display: flex;
+  gap: 1rem;
+}
+
+.redes a {
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+/* --------------------------------------------------
+   5. MODO OSCURO (NUEVO - Parte B)
+   -------------------------------------------------- */
+/* Sobrescribimos estilos cuando el <body> tenga la clase .dark añadida por JS */
+body.dark {
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+/* Adaptamos los colores de las tarjetas para que destaquen sobre fondo oscuro */
+body.dark .tarjeta {
+  background-color: #1e293b;
+  border-color: #334155;
+  color: #f8fafc;
+}
+
+/* --------------------------------------------------
+   6. MENÚ HAMBURGUESA Y RESPONSIVE (NUEVO - Parte C)
+   -------------------------------------------------- */
+/* Por defecto, el botón hamburguesa está oculto en pantallas grandes (Desktop) */
+.hamburguesa {
+  display: none;
+}
+
+/* Reglas aplicadas solo en pantallas con ancho menor o igual a 768px */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* Mostramos el botón hamburguesa en móviles */
+  .hamburguesa {
+    display: block;
+  }
+
+  /* Ocultamos el menú de navegación por defecto en móvil */
+  #menu-principal {
+    display: none;
+    width: 100%;
+  }
+
+  /* NUEVO: Clase de estado agregada por JavaScript para desplegar el menú */
+  #menu-principal.abierto {
+    display: block;
+  }
+
+  .nav-links {
+    flex-direction: column; /* Mostramos los enlaces en vertical */
+    gap: 1rem;
+    padding: 1rem 0;
+    text-align: center;
+  }
+
+  .sobre-mi {
+    flex-direction: column; /* Alineamos imagen y texto en vertical */
+    text-align: center;
+  }
+}

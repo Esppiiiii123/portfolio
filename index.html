@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Portfolio Personal</title>
+
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- NUEVO: Carga diferida de JS con 'defer'.
+       Permite que el HTML se dibuje completamente antes de ejecutar el script,
+       evitando errores de "elemento no encontrado" al usar document.getElementById -->
+  <script src="main.js" defer></script>
+</head>
+<body>
+
+  <!-- 1. NAVBAR SUPERIOR -->
+  <header class="navbar">
+    <div class="logo">MiNombre</div>
+
+    <!-- NUEVO (Parte B): Botón para alternar entre Modo Claro y Modo Oscuro.
+         Usa 'aria-label' para mejorar la accesibilidad de lectores de pantalla -->
+    <button id="toggle-tema" class="btn-tema" aria-label="Cambiar tema">🌙 Modo oscuro</button>
+
+    <!-- NUEVO (Parte C): Botón hamburguesa que solo se mostrará en pantallas móviles -->
+    <button id="toggle-menu" class="hamburguesa" aria-label="Abrir menú">☰</button>
+
+    <!-- NUEVO (Parte C): Añadido id="menu-principal" para que JS pueda seleccionarlo
+         y añadir/quitar la clase .abierto cuando se haga clic en el botón -->
+    <nav id="menu-principal" class="nav-container">
+      <ul class="nav-links">
+        <!-- Corregido el href para que coincida con el id="sobre-mi" de la sección -->
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="main-content">
+
+    <!-- 2. SECCIÓN SOBRE MÍ -->
+    <section id="sobre-mi" class="sobre-mi">
+      <img src="https://via.placeholder.com/200" alt="Foto de perfil" class="foto-perfil" />
+      <div class="bio-texto">
+        <h2>Sobre mí</h2>
+        <p>¡Hola! Soy desarrollador web en formación. Me apasiona crear interfaces limpias, accesibles y totalmente adaptables a cualquier dispositivo utilizando tecnologías como Flexbox y CSS moderno.</p>
+      </div>
+    </section>
+
+    <!-- 3. SECCIÓN PROYECTOS -->
+    <section id="proyectos" class="proyectos-seccion">
+      <h2>Proyectos</h2>
+      <div class="galeria">
+        <article class="tarjeta">
+          <h3>Proyecto 1</h3>
+          <p>Plataforma de gestión de tareas construida con JavaScript.</p>
+        </article>
+        <article class="tarjeta">
+          <h3>Proyecto 2</h3>
+          <p>Aplicación del clima conectada a una API externa.</p>
+        </article>
+        <article class="tarjeta">
+          <h3>Proyecto 3</h3>
+          <p>E-commerce responsive maquetado con Flexbox.</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 4. FOOTER -->
+  <footer id="contacto" class="footer">
+    <div>MiNombre</div>
+    <div class="redes">
+      <a href="#">GitHub</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Twitter</a>
+    </div>
+    <div>&copy; 2026</div>
+  </footer>
+
+</body>
+</html>
